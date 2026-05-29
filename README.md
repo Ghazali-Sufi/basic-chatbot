@@ -1,4 +1,4 @@
-# My React App
+# Basic Chatbot
 
 A React project built with Vite.
 
@@ -27,13 +27,16 @@ npm run preview
 ```
 
 ## Project Structure
+- `components/` - UI component parts
 - `src/` - Source code
   - `App.jsx` - Main App component
-  - `App.css` - App styles
-  - `index.css` - Global styles
+  - `App.css` - App styles 
+  - `index.css` - Global style file with Tailwind configurations
   - `main.jsx` - Entry point
 - `public/` - Static assets
 - `index.html` - HTML template
+- `tailwind.config.js` - Tailwind CSS theme custom configurations
+- `vite.config.js` - Vite development server engine and plugin configuration
 
 ## Learn More
 - [Vite Documentation](https://vitejs.dev)
