@@ -10,6 +10,10 @@ export default function App() {
       <ChatInput />
       <ChatMessage message="hello chatbot" sender="user" />
       <ChatMessage message="Hello! How can I help you?" sender="robot"/>
+      <ChatMessage message="Can you get me today's date?" sender="user"/>
+      <ChatMessage message="Today is June 01" sender="robot"/>
+      <ChatMessage message="how about flip a coin" sender="user"/>
+      <ChatMessage message="Sure! You got tails" sender="robot"/>
     </div>
     </>
   )
