@@ -3,8 +3,8 @@ import ChatInput from '../components/ChatInput.jsx'
 import ChatMessage from '../components/ChatMessage.jsx'
 
 export default function App() {
-  const chatMessages = [
-    {
+  const [chatMessages, setChatMessages] = React.useState([
+     {
       message: 'hello chatbot',
       sender: 'user',
       id: 'id1'
@@ -35,19 +35,24 @@ export default function App() {
       sender: 'robot',
       id: 'id6' 
     },
-    
-  ]
+  ])
   
   return (
     <>
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
-      <ChatInput />
+
+      <ChatInput 
+        chatMessages={chatMessages}
+        setChatMessages={setChatMessages}
+      />
+
       {chatMessages.map((chatMessage) => {
       return (
         <ChatMessage 
         message={chatMessage.message} 
         sender={chatMessage.sender}
-        key={chatMessage.id}/>
+        key={chatMessage.id}
+        />
       )
     })}
     </div>
