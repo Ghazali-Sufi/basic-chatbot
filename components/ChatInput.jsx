@@ -2,12 +2,14 @@ import React from 'react'
 
 export default function ChatInput({ chatMessages, setChatMessages }) {
   const [inputText, setInputText] = React.useState('')
+  const [isLoading, setIsLoading] = React.useState(false)
 
   function saveInputText(event) {
       // Event: is an object that contains information about the event/change that occurred, such as the type of event, the target element, and any additional data associated with the event.
 
     setInputText(event.target.value)
   }
+
   function keyboardEvent(event) {
     if (event.key === 'Enter') {
       sendMessage()
@@ -17,23 +19,34 @@ export default function ChatInput({ chatMessages, setChatMessages }) {
   }
 
   async function sendMessage() {
-    // Here you can implement the logic to send the message to the chatbot or perform any desired action with the inputText.
-        const newChatMessages = [
+    if (isLoading || inputText === '') {
+      return;
+    }
+
+    setIsLoading(true)
+
+    setInputText('')
+
+      const newChatMessages = [
       ...chatMessages, 
       { message: inputText, sender: 'user', id:crypto.randomUUID() }]
 
     setChatMessages(newChatMessages);
 
-      const response = await Chatbot.getResponseAsync(inputText);
+    setChatMessages([
+      ...newChatMessages, 
+      { message: 'Loading...', sender: 'robot', id:crypto.randomUUID() }])
+
+    
+    const response = await Chatbot.getResponseAsync(inputText);
+    console.log('Chatbot response:', response);
 
     setChatMessages([
       ...newChatMessages, 
       { message: response, sender: 'robot', id:crypto.randomUUID() }]);
 
-      console.log('Chatbot response:', response);
-    
-    // Clear the input field after sending the message
-    setInputText('')
+      setIsLoading(false)
+
   }
     return (
      <div className="w-full max-w-lg mx-auto bg-white rounded-xl shadow-sm border border-gray-200 p-4">

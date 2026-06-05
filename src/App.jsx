@@ -21,7 +21,7 @@ export default function App() {
       id: 'id3'
     },
     {
-      message: 'Today is June 01" sender',
+      message: 'Today is June 01',
       sender: 'robot',
       id: 'id4'
     },
