@@ -8,17 +8,23 @@ export default function ChatInput({ chatMessages, setChatMessages }) {
 
     setInputText(event.target.value)
   }
+  function keyboardEvent(event) {
+    if (event.key === 'Enter') {
+      sendMessage()
+    } else if (event.key === 'Escape') {
+      setInputText('')
+    }
+  }
 
-  function sendMessage() {
-    const newChatMessages = [
+  async function sendMessage() {
+    // Here you can implement the logic to send the message to the chatbot or perform any desired action with the inputText.
+        const newChatMessages = [
       ...chatMessages, 
       { message: inputText, sender: 'user', id:crypto.randomUUID() }]
-    // Here you can implement the logic to send the message to the chatbot or perform any desired action with the inputText.
-    console.log('Message sent:', inputText)
 
     setChatMessages(newChatMessages);
 
-      const response = Chatbot.getResponse(inputText);
+      const response = await Chatbot.getResponseAsync(inputText);
 
     setChatMessages([
       ...newChatMessages, 
@@ -40,6 +46,7 @@ export default function ChatInput({ chatMessages, setChatMessages }) {
           className="flex-1 pl-2 py-2 text-sm text-gray-800 placeholder-gray-400 focus:outline-none"
           onChange = {saveInputText}
           value={inputText}
+          onKeyDown= {keyboardEvent}
         />
         
         <button 
