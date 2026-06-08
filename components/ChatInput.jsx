@@ -49,27 +49,26 @@ export default function ChatInput({ chatMessages, setChatMessages }) {
 
   }
     return (
-     <div className="w-full max-w-lg mx-auto bg-white rounded-xl shadow-sm border border-gray-200 p-4">
-      {/* Input Group Wrapper */}
-      <div className="flex items-center gap-2 border border-gray-200 rounded-lg p-1.5 focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100 transition-all">
-        
-        <input 
-          type="text" 
-          placeholder="Send a message to chatbot..." 
-          className="flex-1 pl-2 py-2 text-sm text-gray-800 placeholder-gray-400 focus:outline-none"
-          onChange = {saveInputText}
-          value={inputText}
-          onKeyDown= {keyboardEvent}
-        />
-        
-        <button 
-        className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-md transition-colors shrink-0"
-        onClick={sendMessage}
-        >
-          Send
-        </button>
+    <div className="w-full bg-white border border-slate-200 rounded-xl p-2 shadow-sm focus-within:border-slate-350 focus-within:ring-4 focus-within:ring-slate-100 transition-all">
+  <div className="flex items-center gap-3 border border-slate-200 rounded-lg px-3 py-2 focus-within:border-blue-500 focus-within:ring-1 focus-within:ring-blue-500 transition-colors">
+    
+    <input 
+      type="text" 
+      placeholder="Send a message to chatbot..." 
+      className="flex-1 pl-3 py-2 text-sm text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+      onChange={saveInputText}
+      value={inputText}
+      onKeyDown={keyboardEvent}
+    />
+    
+    <button 
+      className="bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium py-2 px-5 rounded-lg transition-colors shrink-0 shadow-sm"
+      onClick={sendMessage}
+    >
+      Send
+    </button>
 
-      </div>
-    </div>
+  </div>
+</div>
     )
   } 

@@ -39,23 +39,32 @@ export default function App() {
   
   return (
     <>
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 py-12 px-4">
+   <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col justify-between py-6 px-4">
+  <div className="w-full max-w-2xl mx-auto flex flex-col flex-1 justify-between">
+    
+    {/* Chat History Area */}
+    <div className="flex-1 space-y-4 overflow-y-auto py-4">
+      {chatMessages.map((chatMessage) => {
+        return (
+          <ChatMessage 
+            message={chatMessage.message} 
+            sender={chatMessage.sender}
+            key={chatMessage.id}
+          />
+        )
+      })}
+    </div>
 
+    {/* Chat Input Area pinned neatly at the bottom */}
+    <div className="pt-4 border-t border-slate-200/80 bg-slate-50 sticky bottom-0">
       <ChatInput 
         chatMessages={chatMessages}
         setChatMessages={setChatMessages}
       />
-
-      {chatMessages.map((chatMessage) => {
-      return (
-        <ChatMessage 
-        message={chatMessage.message} 
-        sender={chatMessage.sender}
-        key={chatMessage.id}
-        />
-      )
-    })}
     </div>
+
+  </div>
+</div>
     </>
   )
 }
