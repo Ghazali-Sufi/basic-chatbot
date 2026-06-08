@@ -39,11 +39,11 @@ export default function App() {
   
   return (
     <>
-   <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col justify-between py-6 px-4">
-  <div className="w-full max-w-2xl mx-auto flex flex-col flex-1 justify-between">
+   <div className="h-screen bg-slate-50 text-slate-800 flex flex-col justify-between py-6 px-4 ">
+  <div className="w-full max-w-2xl mx-auto flex flex-col flex-1 justify-between overflow-hidden">
     
     {/* Chat History Area */}
-    <div className="flex-1 space-y-4 overflow-y-auto py-4">
+    <div className="flex-1 space-y-4 overflow-y-auto py-4 scrollbar-none ">
       {chatMessages.map((chatMessage) => {
         return (
           <ChatMessage 
