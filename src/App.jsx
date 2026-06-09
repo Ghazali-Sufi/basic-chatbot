@@ -36,14 +36,28 @@ export default function App() {
       id: 'id6' 
     },
   ])
+
+   const chatMessagesRef = React.useRef(null)
   
+  React.useEffect(() => {
+    // React will run this function after the component is created, and everytime the component is updated (e.g. when state changes)
+    const containerELement = chatMessagesRef.current;
+    if (containerELement) {
+      // Scroll to the bottom of the chat messages container
+      containerELement.scrollTop = containerELement.scrollHeight;
+    }
+
+  }, [chatMessages]) // This is the dependency array (Let's us control when the useEffect runs). The useEffect will only run when the chatMessages state changes
+
   return (
     <>
    <div className="h-screen bg-slate-50 text-slate-800 flex flex-col justify-between py-6 px-4 ">
-  <div className="w-full max-w-2xl mx-auto flex flex-col flex-1 justify-between overflow-hidden">
+  <div 
+  className="w-full max-w-2xl mx-auto flex flex-col flex-1 justify-between overflow-hidden"
+  >
     
     {/* Chat History Area */}
-    <div className="flex-1 space-y-4 overflow-y-auto py-4 scrollbar-none ">
+    <div className="flex-1 space-y-4 overflow-y-auto py-4 scrollbar-none " ref = {chatMessagesRef}>
       {chatMessages.map((chatMessage) => {
         return (
           <ChatMessage 
