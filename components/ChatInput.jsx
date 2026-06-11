@@ -35,7 +35,7 @@ export default function ChatInput({ chatMessages, setChatMessages }) {
 
     setChatMessages([
       ...newChatMessages, 
-      { message: 'Loading...', sender: 'robot', id:crypto.randomUUID() }])
+      {  message: <img className="h-[40px]" src="loading-spinner.gif" alt="loading-spinner" />, sender: 'robot', id:crypto.randomUUID() }])
 
     
     const response = await Chatbot.getResponseAsync(inputText);
@@ -55,14 +55,14 @@ export default function ChatInput({ chatMessages, setChatMessages }) {
     <input 
       type="text" 
       placeholder="Send a message to chatbot..." 
-      className="flex-1 pl-3 py-2 text-sm text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
+      className="flex-1 pl-3 py-2 text-md text-slate-800 placeholder-slate-400 bg-transparent focus:outline-none disabled:cursor-not-allowed disabled:opacity-50"
       onChange={saveInputText}
       value={inputText}
       onKeyDown={keyboardEvent}
     />
     
     <button 
-      className="bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium py-2 px-5 rounded-lg transition-colors shrink-0 shadow-sm"
+      className="bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium py-2 px-5 rounded-lg transition-colors shrink-0 shadow-sm cursor-pointer"
       onClick={sendMessage}
     >
       Send

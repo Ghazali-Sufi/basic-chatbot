@@ -4,37 +4,37 @@ import ChatMessage from '../components/ChatMessage.jsx'
 
 export default function App() {
   const [chatMessages, setChatMessages] = React.useState([
-     {
-      message: 'hello chatbot',
-      sender: 'user',
-      id: 'id1'
+    //  {
+    //   message: 'hello chatbot',
+    //   sender: 'user',
+    //   id: 'id1'
         
-    },
-     {
-      message: 'Hello! How can I help you?',
-      sender: 'robot',
-      id: 'id2' 
-    },
-    {
-      message: 'Can you get me todays date?',
-      sender: 'user',
-      id: 'id3'
-    },
-    {
-      message: 'Today is June 01',
-      sender: 'robot',
-      id: 'id4'
-    },
-    {
-      message: 'how about flip a coin',
-      sender: 'user',
-      id: 'id5'
-    },
-     {
-      message: 'Sure! You got tails',
-      sender: 'robot',
-      id: 'id6' 
-    },
+    // },
+    //  {
+    //   message: 'Hello! How can I help you?',
+    //   sender: 'robot',
+    //   id: 'id2' 
+    // },
+    // {
+    //   message: 'Can you get me todays date?',
+    //   sender: 'user',
+    //   id: 'id3'
+    // },
+    // {
+    //   message: 'Today is June 01',
+    //   sender: 'robot',
+    //   id: 'id4'
+    // },
+    // {
+    //   message: 'how about flip a coin',
+    //   sender: 'user',
+    //   id: 'id5'
+    // },
+    //  {
+    //   message: 'Sure! You got tails',
+    //   sender: 'robot',
+    //   id: 'id6' 
+    // },
   ])
 
    const chatMessagesRef = React.useRef(null)
@@ -57,8 +57,15 @@ export default function App() {
   >
     
     {/* Chat History Area */}
-    <div className="flex-1 space-y-4 overflow-y-auto py-4 scrollbar-none " ref = {chatMessagesRef}>
-      {chatMessages.map((chatMessage) => {
+    <div className="flex-1 space-y-4 overflow-y-auto py-4 scrollbar-none " 
+          ref = {chatMessagesRef}>
+      { chatMessages.length === 0 && (
+        <div className="text-center text-slate-400">
+          Welcome to the chatbot project! Send a message using to the textbox below.
+        </div>
+      )}
+       {
+      chatMessages.map((chatMessage) => {
         return (
           <ChatMessage 
             message={chatMessage.message} 
