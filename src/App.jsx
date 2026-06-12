@@ -1,9 +1,10 @@
 import React from 'react'
-import ChatInput from '../components/ChatInput.jsx'
-import ChatMessage from '../components/ChatMessage.jsx'
+import {useState, useRef, useEffect} from 'react'
+import ChatInput from './components/ChatInput'
+import ChatMessage from './components/ChatMessage'
 
 export default function App() {
-  const [chatMessages, setChatMessages] = React.useState([
+  const [chatMessages, setChatMessages] = useState([
     //  {
     //   message: 'hello chatbot',
     //   sender: 'user',
@@ -38,9 +39,9 @@ export default function App() {
   ])
 
    const useAutoScroll = (dependencies) => {
-       const containerRef = React.useRef(null)
+       const containerRef = useRef(null)
 
-       React.useEffect(() => {
+       useEffect(() => {
     // React will run this function after the component is created, and everytime the component is updated (e.g. when state changes)
     const containerELement = containerRef.current;
     if (containerELement) {

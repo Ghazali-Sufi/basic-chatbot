@@ -1,8 +1,10 @@
 import React from 'react'
+import {useState} from 'react'
+import {Chatbot} from 'supersimpledev'
 
 export default function ChatInput({ chatMessages, setChatMessages }) {
-  const [inputText, setInputText] = React.useState('')
-  const [isLoading, setIsLoading] = React.useState(false)
+  const [inputText, setInputText] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
 
   function saveInputText(event) {
       // Event: is an object that contains information about the event/change that occurred, such as the type of event, the target element, and any additional data associated with the event.
