@@ -37,18 +37,25 @@ export default function App() {
     // },
   ])
 
-   const chatMessagesRef = React.useRef(null)
-  
-  React.useEffect(() => {
+   const useAutoScroll = (dependencies) => {
+       const containerRef = React.useRef(null)
+
+       React.useEffect(() => {
     // React will run this function after the component is created, and everytime the component is updated (e.g. when state changes)
-    const containerELement = chatMessagesRef.current;
+    const containerELement = containerRef.current;
     if (containerELement) {
       // Scroll to the bottom of the chat messages container
       containerELement.scrollTop = containerELement.scrollHeight;
     }
 
-  }, [chatMessages]) // This is the dependency array (Let's us control when the useEffect runs). The useEffect will only run when the chatMessages state changes
+  }, [dependencies]) // This is the dependency array (Let's us control when the useEffect runs). The useEffect will only run when the chatMessages state changes
 
+  return containerRef;
+   }
+
+    const chatMessagesRef = useAutoScroll(chatMessages)
+  
+  
   return (
     <>
    <div className="h-screen bg-slate-50 text-slate-800 flex flex-col justify-between py-6 px-4 ">
